@@ -11,7 +11,7 @@ public class Sum {
 		s2 = sc.next();
 		a = Integer.parseInt(s1);
 		b = Integer.parseInt(s2);
-		//츨력 : 화면에 두 수의 합을 출력한다.
+		//출력 : 화면에 두 수의 합을 출력한다.
 //		System.out.println(a+","+b);
 //		int c= a+b;
 //		System.out.println("두 수의 합은"+(a+b)+"입니다.");
