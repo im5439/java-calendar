@@ -3,8 +3,7 @@ package PT;
 import java.util.Scanner;
 
 public class Calendar {
-	public int[] MAXDAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	public int[] LEAPSYEARS = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
 
 	// 윤년 인지 아닌지 판단
 	public boolean isLeapyear(int year) {
@@ -12,13 +11,6 @@ public class Calendar {
 			return true;
 		else
 			return false;
-	}
-
-	public int MaxdayofMonth(int year, int month) {
-		if (isLeapyear(year))
-			return LEAPSYEARS[month - 1];
-		else
-			return MAXDAYS[month - 1];
 	}
 
 	// 달의 첫 요일을 구해서 돌려줌
@@ -34,13 +26,13 @@ public class Calendar {
 			}
 		}
 		for (int k = 1; k < month; k++) {
-			daysum += getNumberofDaysMonth(year, k);
+			daysum += MaxdayofMonth(year, k);
 		}
 		return (monthsum + leapyear + daysum) % 7;
 	}
 
 	// 달의 마지막 일수 계산
-	public int getNumberofDaysMonth(int year, int month) {
+	public int MaxdayofMonth(int year, int month) {
 		if (month == 4 || month == 6 || month == 9 || month == 11) {
 			return 30;
 		} else if (month == 2 && isLeapyear(year) == true) {
@@ -58,7 +50,7 @@ public class Calendar {
 		System.out.println("  일   월   화   수   목   금   토");
 
 		int count = 0;
-		for (int i = 1; i <= getNumberofDaysMonth(year, month); i++) {
+		for (int i = 1; i <= MaxdayofMonth(year, month); i++) {
 			if (i < 2) {
 				for (int j = 1; j <= getStartDay(year, month); j++) {
 					System.out.print("   ");
