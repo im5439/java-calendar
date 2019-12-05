@@ -4,31 +4,13 @@ import java.util.Scanner;
 
 public class Calendar {
 
-
+	
 	// 윤년 인지 아닌지 판단
 	public boolean isLeapyear(int year) {
 		if ((year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0)))
 			return true;
 		else
 			return false;
-	}
-
-	// 달의 첫 요일을 구해서 돌려줌
-	public int getStartDay(int year, int month) {
-		int monthsum = 0;
-		int leapyear = 0;
-		int daysum = 1;
-
-		for (int i = 1; i < year; i++) {
-			monthsum += 365;
-			if (isLeapyear(i) == true) {
-				leapyear += 1;
-			}
-		}
-		for (int k = 1; k < month; k++) {
-			daysum += MaxdayofMonth(year, k);
-		}
-		return (monthsum + leapyear + daysum) % 7;
 	}
 
 	// 달의 마지막 일수 계산
@@ -43,6 +25,27 @@ public class Calendar {
 			return 31;
 		}
 	}
+	
+	// 달의 첫 요일을 구해서 돌려줌
+	public int getStartDay(int year, int month) {
+		int monthsum = 0;
+		int leapyear = 0;
+		int daysum = 1;
+
+		for (int i = 1; i < year; i++) {
+			monthsum += 365;
+			if (isLeapyear(i) == true) {
+				leapyear += 1;
+			}
+		}
+
+		for (int k = 1; k < month; k++) {
+			daysum += MaxdayofMonth(year, k);
+		}
+
+		return (monthsum + leapyear + daysum) % 7;
+	}
+
 
 	// 달력 출력
 	public void printcalendar(int year, int month) {
